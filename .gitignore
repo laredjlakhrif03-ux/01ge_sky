@@ -1,0 +1,53 @@
+# ── Python ───────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Django ───────────────────────────────────────
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# ── Environment variables ─────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Virtual environments ──────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── IDEs & editors ───────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# ── Docker ───────────────────────────────────────
+# (keep docker-compose.yml and Dockerfile)
+
+# ── Node (if any) ────────────────────────────────
+node_modules/
+npm-debug.log*
+
+# ── Temp / Cache ─────────────────────────────────
+*.tmp
+*.bak
+temp_assets/
+.cache/

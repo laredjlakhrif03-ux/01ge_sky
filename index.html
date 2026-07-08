@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GE_Sky — سماء التجارة الإلكترونية العالمية</title>
+  <meta name="description" content="GE_Sky منصة رقمية شاملة ومتعددة الوكلاء توحد وتدير خدمات التسويق الرقمي والتجارة الإلكترونية واللوجستيك والذكاء الاصطناعي داخل منظومة تشغيل واحدة ذكية.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">GE_Sky</span>
+        <span class="logo-sub">سماء التجارة</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">عن المنصة</a></li>
+        <li><a href="#ecosystems">المنظومات</a></li>
+        <li><a href="#agents">الوكلاء</a></li>
+        <li><a href="#services">الخدمات</a></li>
+        <li><a href="#mvp">خطة الإطلاق</a></li>
+        <li><a href="dashboard.html" class="nav-cta" style="background:var(--grad-primary); color:white;">لوحة التحكم التشغيلية</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="قائمة">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="grid-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        منصة متعددة الوكلاء — الجيل القادم
+      </div>
+      <h1 class="hero-title">
+        <span class="title-accent">GE_Sky</span>
+        <br>
+        <span class="title-main">سماء التجارة</span>
+        <br>
+        <span class="title-gradient">الإلكترونية العالمية</span>
+      </h1>
+      <p class="hero-desc">
+        منصة رقمية شاملة تُعيد تعريف كيفية تشغيل الأعمال الرقمية — من التسويق الذكي إلى التوصيل الآمن، كل شيء في منظومة واحدة مؤتمتة ومدعومة بالذكاء الاصطناعي.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">35+</span>
+          <span class="stat-label">وكيل ذكاء اصطناعي</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">10</span>
+          <span class="stat-label">منظومة متكاملة</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">60+</span>
+          <span class="stat-label">خدمة ذكية</span>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a href="dashboard.html" class="btn btn-primary btn-large">
+          <span>دخول لوحة التحكم التشغيلية</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#ecosystems" class="btn btn-ghost btn-large">اكتشف المنصة</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="orbit-ring ring-1">
+        <div class="orbit-node" style="--angle:0deg"><span class="node-icon">🤖</span></div>
+        <div class="orbit-node" style="--angle:60deg"><span class="node-icon">📊</span></div>
+        <div class="orbit-node" style="--angle:120deg"><span class="node-icon">🚀</span></div>
+        <div class="orbit-node" style="--angle:180deg"><span class="node-icon">💡</span></div>
+        <div class="orbit-node" style="--angle:240deg"><span class="node-icon">🛒</span></div>
+        <div class="orbit-node" style="--angle:300deg"><span class="node-icon">🔒</span></div>
+      </div>
+      <div class="orbit-ring ring-2">
+        <div class="orbit-node" style="--angle:30deg"><span class="node-icon">📦</span></div>
+        <div class="orbit-node" style="--angle:90deg"><span class="node-icon">💳</span></div>
+        <div class="orbit-node" style="--angle:150deg"><span class="node-icon">📢</span></div>
+        <div class="orbit-node" style="--angle:210deg"><span class="node-icon">🌐</span></div>
+        <div class="orbit-node" style="--angle:270deg"><span class="node-icon">📈</span></div>
+        <div class="orbit-node" style="--angle:330deg"><span class="node-icon">🎯</span></div>
+      </div>
+      <div class="orbit-center">
+        <div class="center-logo">
+          <span>◈</span>
+          <p>Sky Ops</p>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- Problem/Solution Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">المشكلة والحل</span>
+        <h2 class="section-title">لماذا <span class="text-gradient">GE_Sky</span>؟</h2>
+        <p class="section-desc">تعاني الشركات من أدوات متفرقة وتكاليف تشغيل مرتفعة وبطء في اتخاذ القرار — GE_Sky تحل كل ذلك بمنصة واحدة موحدة.</p>
+      </div>
+
+      <div class="problems-grid">
+        <div class="problem-card" data-aos="fade-up" data-delay="0">
+          <div class="problem-icon">⛓️</div>
+          <h3>محدودية التوسع الخطي</h3>
+          <p>النمو يعتمد على إضافة موارد بشرية وأدوات منفصلة مما يجعل التوسع مكلفاً وبطيئاً</p>
+        </div>
+        <div class="problem-card" data-aos="fade-up" data-delay="100">
+          <div class="problem-icon">⏳</div>
+          <h3>بطء اتخاذ القرار</h3>
+          <p>الحملات والعروض وردود الفعل تتأخر بسبب سير العمل اليدوي المعتمد على البشر</p>
+        </div>
+        <div class="problem-card" data-aos="fade-up" data-delay="200">
+          <div class="problem-icon">🌍</div>
+          <h3>عدم التوافق الثقافي</h3>
+          <p>الأنظمة التقليدية تفشل في تكييف المحتوى مع اللغة والسياق الثقافي المحلي</p>
+        </div>
+        <div class="problem-card" data-aos="fade-up" data-delay="300">
+          <div class="problem-icon">🧩</div>
+          <h3>التجزؤ التشغيلي</h3>
+          <p>إدارة التسويق والمتجر والمدفوعات والتوصيل وCRM موزعة على أنظمة منفصلة</p>
+        </div>
+        <div class="problem-card" data-aos="fade-up" data-delay="400">
+          <div class="problem-icon">📉</div>
+          <h3>ضعف الذكاء اللحظي</h3>
+          <p>عدم القدرة على استغلال البيانات السلوكية والبيعية بسرعة لاتخاذ القرار الأمثل</p>
+        </div>
+        <div class="problem-solution" data-aos="fade-up" data-delay="500">
+          <div class="solution-badge">الحل</div>
+          <h3>منصة GE_Sky المتكاملة</h3>
+          <p>منظومة تشغيل موحدة، أصيلة للذكاء الاصطناعي، ومتعددة الوكلاء — تأتمت وتنسق كل شيء من البداية إلى النهاية</p>
+          <div class="solution-tags">
+            <span>A2A</span><span>ذكاء اصطناعي</span><span>تكامل شامل</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transformation -->
+      <div class="transform-section">
+        <h3 class="transform-title">منطق التحول</h3>
+        <div class="transform-items">
+          <div class="transform-item">
+            <span class="from">التنفيذ اليدوي</span>
+            <span class="arrow">→</span>
+            <span class="to">الاستقلالية المنسقة</span>
+          </div>
+          <div class="transform-item">
+            <span class="from">الأدوات المتفرقة</span>
+            <span class="arrow">→</span>
+            <span class="to">المنصة المتكاملة</span>
+          </div>
+          <div class="transform-item">
+            <span class="from">الرسائل العامة</span>
+            <span class="arrow">→</span>
+            <span class="to">المواءمة السياقية</span>
+          </div>
+          <div class="transform-item">
+            <span class="from">الرؤية المتأخرة</span>
+            <span class="arrow">→</span>
+            <span class="to">دعم القرار اللحظي</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Stack -->
+  <section class="tech-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">البنية التقنية</span>
+        <h2 class="section-title">معمارية <span class="text-gradient">متطورة</span> من 7 طبقات</h2>
+      </div>
+      <div class="layers-container">
+        <div class="layer-card" data-layer="1">
+          <div class="layer-num">01</div>
+          <div class="layer-info">
+            <h3>طبقة التجربة</h3>
+            <p>لوحة ويب · واجهات المتجر · بوابات العملاء · واجهة دردشة الدعم</p>
+          </div>
+          <div class="layer-icon">🖥️</div>
+        </div>
+        <div class="layer-card" data-layer="2">
+          <div class="layer-num">02</div>
+          <div class="layer-info">
+            <h3>طبقة التنسيق</h3>
+            <p>Sky Ops Orchestrator · موجه المهام · محلل السياق · سجل القرارات</p>
+          </div>
+          <div class="layer-icon">⚙️</div>
+        </div>
+        <div class="layer-card" data-layer="3">
+          <div class="layer-num">03</div>
+          <div class="layer-info">
+            <h3>طبقة الوكلاء المتخصصين</h3>
+            <p>وكلاء التسويق · المحتوى · العملاء · الدفع · المخزون · اللوجستيك</p>
+          </div>
+          <div class="layer-icon">🤖</div>
+        </div>
+        <div class="layer-card" data-layer="4">
+          <div class="layer-num">04</div>
+          <div class="layer-info">
+            <h3>طبقة منطق الخدمات</h3>
+            <p>منطق الحملات · المتجر · التوصيات · التسعير · التنفيذ · التقارير</p>
+          </div>
+          <div class="layer-icon">🔧</div>
+        </div>
+        <div class="layer-card" data-layer="5">
+          <div class="layer-num">05</div>
+          <div class="layer-info">
+            <h3>طبقة الأتمتة والتكامل</h3>
+            <p>n8n Workflows · Celery · Webhooks · موصلات API · مسارات الإشعارات</p>
+          </div>
+          <div class="layer-icon">⚡</div>
+        </div>
+        <div class="layer-card" data-layer="6">
+          <div class="layer-num">06</div>
+          <div class="layer-info">
+            <h3>طبقة البيانات والذكاء</h3>
+            <p>PostgreSQL · قاعدة بيانات متجهية · نماذج ML · مسارات NLP · RAG</p>
+          </div>
+          <div class="layer-icon">🧠</div>
+        </div>
+        <div class="layer-card" data-layer="7">
+          <div class="layer-num">07</div>
+          <div class="layer-info">
+            <h3>طبقة الحوكمة والأمن</h3>
+            <p>التحكم في الوصول · سجلات التدقيق · المراقبة الأمنية · ضوابط الامتثال</p>
+          </div>
+          <div class="layer-icon">🔐</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ecosystems Section -->
+  <section class="ecosystems" id="ecosystems">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">المنظومات</span>
+        <h2 class="section-title">10 منظومات <span class="text-gradient">متكاملة</span></h2>
+        <p class="section-desc">كل منظومة تضم مجموعة من الخدمات الذكية المتخصصة التي تعمل بتناسق تام</p>
+      </div>
+      <div class="ecosystems-grid" id="ecosystemsGrid">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Agents Section -->
+  <section class="agents-section" id="agents">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">الوكلاء الذكيون</span>
+        <h2 class="section-title">35+ وكيل <span class="text-gradient">متخصص</span></h2>
+        <p class="section-desc">كل وكيل متخصص في مجاله، يعمل باستقلالية ويتنسق مع غيره عبر نموذج A2A الفريد</p>
+      </div>
+      <div class="agents-filter">
+        <button class="filter-btn active" data-filter="all">الكل</button>
+        <button class="filter-btn" data-filter="تسويق">التسويق</button>
+        <button class="filter-btn" data-filter="تجارة">التجارة</button>
+        <button class="filter-btn" data-filter="عملاء">العملاء</button>
+        <button class="filter-btn" data-filter="لوجستيك">اللوجستيك</button>
+        <button class="filter-btn" data-filter="تحليلات">التحليلات</button>
+      </div>
+      <div class="agents-grid" id="agentsGrid">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Showcase -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">فهرس الخدمات</span>
+        <h2 class="section-title">60+ خدمة <span class="text-gradient">ذكية</span></h2>
+        <p class="section-desc">اكتشف المجموعة الكاملة من الخدمات التي توفرها منصة GE_Sky</p>
+      </div>
+      <div class="services-tabs">
+        <button class="tab-btn active" data-tab="marketing" id="tab-marketing">🎯 التسويق</button>
+        <button class="tab-btn" data-tab="ecommerce" id="tab-ecommerce">🛒 التجارة</button>
+        <button class="tab-btn" data-tab="crm" id="tab-crm">👥 العملاء</button>
+        <button class="tab-btn" data-tab="payments" id="tab-payments">💳 المدفوعات</button>
+        <button class="tab-btn" data-tab="logistics" id="tab-logistics">🚚 اللوجستيك</button>
+        <button class="tab-btn" data-tab="analytics" id="tab-analytics">📊 التحليلات</button>
+      </div>
+      <div class="services-panels" id="servicesPanels">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Target Users -->
+  <section class="users-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">المستخدمون</span>
+        <h2 class="section-title">منصة مصممة <span class="text-gradient">لك</span></h2>
+      </div>
+      <div class="users-grid" id="usersGrid">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- MVP Roadmap -->
+  <section class="mvp-section" id="mvp">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">خطة الإطلاق</span>
+        <h2 class="section-title">مراحل <span class="text-gradient">الانطلاق</span></h2>
+        <p class="section-desc">خطة إطلاق ثلاثية المراحل تبدأ بنواة تشغيلية قوية وتتوسع تدريجياً</p>
+      </div>
+      <div class="roadmap-container">
+        <div class="roadmap-phase" id="phase1">
+          <div class="phase-header">
+            <div class="phase-badge phase-1">المرحلة 01</div>
+            <h3>النواة التشغيلية</h3>
+            <p>الأساس الأقوى للانطلاق</p>
+          </div>
+          <div class="phase-services" id="phase1Services"></div>
+        </div>
+        <div class="roadmap-connector">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">▼</div>
+        </div>
+        <div class="roadmap-phase" id="phase2">
+          <div class="phase-header">
+            <div class="phase-badge phase-2">المرحلة 02</div>
+            <h3>الذكاء المتقدم</h3>
+            <p>توسيع القدرات التحليلية</p>
+          </div>
+          <div class="phase-services" id="phase2Services"></div>
+        </div>
+        <div class="roadmap-connector">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">▼</div>
+        </div>
+        <div class="roadmap-phase" id="phase3">
+          <div class="phase-header">
+            <div class="phase-badge phase-3">المرحلة 03</div>
+            <h3>التوسع الشامل</h3>
+            <p>منظومة كاملة ومتكاملة</p>
+          </div>
+          <div class="phase-services" id="phase3Services"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Model -->
+  <section class="business-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">نموذج الأعمال</span>
+        <h2 class="section-title">مزايا <span class="text-gradient">تنافسية</span> لا مثيل لها</h2>
+      </div>
+      <div class="advantages-grid" id="advantagesGrid">
+        <!-- Filled by JS -->
+      </div>
+      <div class="models-row">
+        <div class="model-card primary">
+          <div class="model-icon">💎</div>
+          <h3>SaaS</h3>
+          <p>النموذج الرئيسي — اشتراك متكرر مع وصول لجميع الخدمات</p>
+        </div>
+        <div class="model-card">
+          <div class="model-icon">📈</div>
+          <h3>Success Fee</h3>
+          <p>مكون إضافي مرتبط بالأداء الفعلي ونتائج النمو</p>
+        </div>
+        <div class="model-card">
+          <div class="model-icon">🏢</div>
+          <h3>Enterprise</h3>
+          <p>خطط مخصصة للمؤسسات الكبيرة مع عروض White-label</p>
+        </div>
+        <div class="model-card">
+          <div class="model-icon">🔌</div>
+          <h3>API Plans</h3>
+          <p>اشتراكات قائمة على الوحدات واستخدام واجهات البرمجة</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="big-stat">
+          <span class="big-num" data-target="30">0</span><span class="big-unit">%</span>
+          <p>زيادة في التفاعل والتحويل</p>
+        </div>
+        <div class="big-stat">
+          <span class="big-num" data-target="35">0</span><span class="big-unit">+</span>
+          <p>وكيل ذكاء اصطناعي متخصص</p>
+        </div>
+        <div class="big-stat">
+          <span class="big-num" data-target="60">0</span><span class="big-unit">+</span>
+          <p>خدمة رقمية ذكية متكاملة</p>
+        </div>
+        <div class="big-stat">
+          <span class="big-num" data-target="8">0</span><span class="big-unit">×</span>
+          <p>أنماط تجارة مدعومة</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="contact">
+    <div class="cta-bg">
+      <div class="cta-orb orb-a"></div>
+      <div class="cta-orb orb-b"></div>
+    </div>
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">ابدأ رحلة التحول الرقمي <span class="text-gradient">اليوم</span></h2>
+        <p class="cta-desc">انضم إلى الجيل القادم من الأعمال الرقمية المدعومة بالذكاء الاصطناعي — GE_Sky تنتظرك</p>
+        <div class="cta-actions">
+          <a href="dashboard.html" class="btn btn-primary btn-large">
+            <span>دخول لوحة التحكم التشغيلية</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="http://localhost:8001/api/" target="_blank" class="btn btn-outline btn-large">استعراض REST API</a>
+        </div>
+        <div class="cta-languages">
+          <span class="lang-badge">🇸🇦 العربية</span>
+          <span class="lang-badge">🇬🇧 English</span>
+          <span class="lang-badge">🇫🇷 Français</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="logo-icon">◈</span>
+            <span>GE_Sky</span>
+          </div>
+          <p>Global E-Commerce Sky — سماء التجارة الإلكترونية العالمية</p>
+          <div class="footer-tagline">منصة رقمية شاملة ومتعددة الوكلاء</div>
+        </div>
+        <div class="footer-links-group">
+          <h4>المنظومات</h4>
+          <ul>
+            <li><a href="#ecosystems">التسويق الذكي</a></li>
+            <li><a href="#ecosystems">التجارة الإلكترونية</a></li>
+            <li><a href="#ecosystems">إدارة العملاء</a></li>
+            <li><a href="#ecosystems">اللوجستيك</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>التطبيق</h4>
+          <ul>
+            <li><a href="dashboard.html">🖥️ لوحة التحكم</a></li>
+            <li><a href="http://localhost:8001/admin" target="_blank">⚙️ إدارة النظام</a></li>
+            <li><a href="http://localhost:8001/api/" target="_blank">🔌 REST API</a></li>
+            <li><a href="#agents">🤖 الوكلاء</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>التقنية</h4>
+          <ul>
+            <li><a href="http://localhost:8001/api/" target="_blank">Django REST Framework</a></li>
+            <li><a href="#about">AI Multi-Agent A2A</a></li>
+            <li><a href="#ecosystems">n8n Automation</a></li>
+            <li><a href="#mvp">خطة الإطلاق MVP</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-trade-modes">
+          <span class="trade-badge">B2C</span>
+          <span class="trade-badge">B2B</span>
+          <span class="trade-badge">C2C</span>
+          <span class="trade-badge">G2C</span>
+          <span class="trade-badge">G2B</span>
+          <span class="trade-badge active">A2A</span>
+        </div>
+        <p class="footer-copy">© 2026 GE_Sky — جميع الحقوق محفوظة</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

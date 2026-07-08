@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GE_Sky — لوحة التحكم التشغيلية</title>
+  <meta name="description" content="لوحة التحكم الذكية لمنصة GE_Sky — إدارة المتاجر والحملات والعملاء والطلبات والوكلاء في مكان واحد." />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="dashboard.css"/>
+</head>
+<body>
+
+<!-- ===== AUTH MODAL ===== -->
+<div id="authModal" class="modal-overlay active">
+  <div class="modal-box">
+    <div class="auth-logo">
+      <span class="logo-icon">🌐</span>
+      <h2>GE_Sky</h2>
+      <p>منصة التجارة الإلكترونية الذكية</p>
+    </div>
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login">تسجيل الدخول</button>
+      <button class="auth-tab" data-tab="register">إنشاء حساب</button>
+    </div>
+    <form id="authForm" class="auth-form">
+      <div class="form-group">
+        <label>اسم المستخدم</label>
+        <input type="text" id="authUsername" placeholder="أدخل اسم المستخدم" required/>
+      </div>
+      <div id="emailField" class="form-group hidden">
+        <label>البريد الإلكتروني</label>
+        <input type="email" id="authEmail" placeholder="example@email.com"/>
+      </div>
+      <div class="form-group">
+        <label>كلمة المرور</label>
+        <input type="password" id="authPassword" placeholder="أدخل كلمة المرور" required/>
+      </div>
+      <div id="authError" class="auth-error hidden"></div>
+      <button type="submit" class="btn-auth" id="authSubmitBtn">تسجيل الدخول</button>
+      <p class="auth-hint">للتجربة السريعة: اسم المستخدم <strong>admin</strong> / كلمة المرور <strong>admin123</strong></p>
+    </form>
+  </div>
+</div>
+
+<!-- ===== SIDEBAR ===== -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="brand">
+      <span class="brand-icon">🌐</span>
+      <div>
+        <h1 class="brand-name">GE_Sky</h1>
+        <p class="brand-sub">المنصة الذكية</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="user-info" id="userInfo">
+    <div class="user-avatar" id="userAvatar">م</div>
+    <div>
+      <p class="user-name" id="userName">المستخدم</p>
+      <p class="user-role">مشرف النظام</p>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="nav-section-label">الرئيسي</div>
+    <button class="nav-item active" data-page="dashboard">
+      <span class="nav-icon">📊</span> نظرة عامة
+    </button>
+    <div class="nav-section-label">المنظومات</div>
+    <button class="nav-item" data-page="stores">
+      <span class="nav-icon">🛍️</span> المتاجر والمنتجات
+    </button>
+    <button class="nav-item" data-page="campaigns">
+      <span class="nav-icon">📢</span> الحملات التسويقية
+    </button>
+    <button class="nav-item" data-page="content">
+      <span class="nav-icon">✍️</span> استوديو المحتوى
+    </button>
+    <button class="nav-item" data-page="crm">
+      <span class="nav-icon">👥</span> العملاء والدعم
+    </button>
+    <button class="nav-item" data-page="orders">
+      <span class="nav-icon">📦</span> سجل الطلبات
+    </button>
+    <button class="nav-item" data-page="logistics">
+      <span class="nav-icon">🚛</span> الخدمات اللوجستية
+    </button>
+    <button class="nav-item" data-page="payments">
+      <span class="nav-icon">💳</span> المدفوعات والفواتير
+    </button>
+    <button class="nav-item" data-page="analytics">
+      <span class="nav-icon">📈</span> التحليلات والمؤشرات
+    </button>
+    <button class="nav-item" data-page="settings">
+      <span class="nav-icon">⚙️</span> التكاملات والإعدادات
+    </button>
+    <div class="nav-section-label">الذكاء الاصطناعي</div>
+    <button class="nav-item" data-page="agents">
+      <span class="nav-icon">🤖</span> وكلاء A2A
+    </button>
+    <button class="nav-item" data-page="simulate">
+      <span class="nav-icon">⚡</span> محاكاة السيناريوهات
+    </button>
+    <div class="nav-section-label">التنقل السريع</div>
+    <a href="index.html" class="nav-item" style="text-decoration:none">
+      <span class="nav-icon">🌐</span> الصفحة الرئيسية
+    </a>
+    <a href="http://localhost:8001/admin" target="_blank" class="nav-item" style="text-decoration:none">
+      <span class="nav-icon">⚙️</span> إدارة النظام (Admin)
+    </a>
+    <a href="http://localhost:8001/api/" target="_blank" class="nav-item" style="text-decoration:none">
+      <span class="nav-icon">🔌</span> واجهة REST API
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="api-status">
+      <span class="status-dot" id="apiStatusDot"></span>
+      <span id="apiStatusText">يتصل...</span>
+    </div>
+    <button class="btn-logout" onclick="logout()">تسجيل الخروج</button>
+  </div>
+</aside>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main-content" id="mainContent">
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+    <div class="topbar-left">
+      <h2 class="page-title" id="pageTitle">نظرة عامة</h2>
+    </div>
+    <div class="topbar-right">
+      <div class="current-store-select">
+        <label>المتجر:</label>
+        <select id="activeStoreSelect" onchange="onStoreChange(this.value)">
+          <option value="">جارٍ التحميل...</option>
+        </select>
+      </div>
+      <a href="http://localhost:8001/admin" target="_blank" class="topbar-link" title="لوحة إدارة Django">⚙️ Admin</a>
+      <a href="http://localhost:8001/api/" target="_blank" class="topbar-link" title="واجهة API">🔌 API</a>
+      <a href="index.html" class="topbar-link" title="الصفحة الرئيسية">🌐 الرئيسية</a>
+    </div>
+  </header>
+
+  <!-- Pages Container -->
+  <div class="pages-wrapper">
+
+    <!-- ====== DASHBOARD ====== -->
+    <section class="page active" id="page-dashboard">
+      <div class="stats-row" id="statsRow">
+        <div class="stat-card">
+          <div class="stat-icon blue">📦</div>
+          <div class="stat-info"><span class="stat-val" id="stat-orders">—</span><span class="stat-label">إجمالي الطلبات</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">👥</div>
+          <div class="stat-info"><span class="stat-val" id="stat-customers">—</span><span class="stat-label">العملاء</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon purple">📢</div>
+          <div class="stat-info"><span class="stat-val" id="stat-campaigns">—</span><span class="stat-label">الحملات النشطة</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon orange">🤖</div>
+          <div class="stat-info"><span class="stat-val" id="stat-decisions">—</span><span class="stat-label">قرارات الوكلاء</span></div>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="card">
+          <div class="card-header"><h3>آخر قرارات الوكلاء</h3></div>
+          <div class="card-body" id="dashDecisions">
+            <div class="skeleton-list"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h3>آخر الطلبات</h3></div>
+          <div class="card-body" id="dashOrders">
+            <div class="skeleton-list"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== STORES ====== -->
+    <section class="page" id="page-stores">
+      <div class="page-actions">
+        <button class="btn-primary" onclick="openModal('storeModal')">
+          <span>+</span> إنشاء متجر جديد
+        </button>
+      </div>
+      <div class="card">
+        <div class="card-header"><h3>قائمة المتاجر</h3></div>
+        <div class="card-body" id="storesList"></div>
+      </div>
+      <div class="card mt-20">
+        <div class="card-header">
+          <h3>المنتجات</h3>
+          <button class="btn-sm" onclick="openModal('productModal')">+ إضافة منتج</button>
+        </div>
+        <div class="card-body" id="productsList"></div>
+      <div class="card mt-20" id="storefrontSimCard">
+        <div class="card-header">
+          <h3>🛒 محاكاة متجر المستهلك والسلة (Storefront Simulator)</h3>
+        </div>
+        <div class="card-body">
+          <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:16px;">
+            تتيح لك هذه المنظومة محاكاة قيام عميل بشراء منتجات من متجرك وإتمام الطلب لتشغيل دورة حياة الطلبات والمدفوعات والشحن بالكامل.
+          </p>
+          <div class="card-row">
+            <div class="card flex-1" style="background:var(--bg-dark);">
+              <div class="card-header"><h4>المنتجات المعروضة للعميل</h4></div>
+              <div class="card-body" id="storefrontProducts" style="max-height:300px; overflow-y:auto; padding:10px;">
+                <!-- Populate dynamically -->
+              </div>
+            </div>
+            <div class="card flex-1" style="background:var(--bg-dark);">
+              <div class="card-header"><h4>سلة التسوق</h4></div>
+              <div class="card-body" style="padding:10px;">
+                <div id="cartItemsContainer" style="max-height:160px; overflow-y:auto; margin-bottom:12px;">
+                  <div class="empty-state" style="padding:10px;"><p>السلة فارغة</p></div>
+                </div>
+                <div class="form-group" style="margin-bottom:10px;">
+                  <label style="font-size:0.75rem;">قسيمة الخصم (كوبون)</label>
+                  <div style="display:flex; gap:8px;">
+                    <input type="text" id="couponCode" placeholder="SKY20" style="padding:6px; font-size:0.8rem;"/>
+                    <button class="btn-sm" onclick="applyCartCoupon()">تطبيق</button>
+                  </div>
+                </div>
+                <div style="border-top:1px solid var(--border); padding-top:10px; margin-bottom:10px; display:flex; justify-content:space-between; font-size:0.85rem;">
+                  <span>خصم الكوبون:</span>
+                  <span id="cartDiscount">$0.00</span>
+                </div>
+                <div style="border-top:1px solid var(--border); padding-top:10px; margin-bottom:12px; display:flex; justify-content:space-between; font-weight:700;">
+                  <span>الإجمالي النهائي:</span>
+                  <span id="cartTotal" style="color:var(--sky-emerald);">$0.00</span>
+                </div>
+                <button class="btn-primary" style="width:100%; justify-content:center;" onclick="openCheckoutModal()">💳 المتابعة إلى الدفع وتأكيد الطلب</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== CAMPAIGNS ====== -->
+    <section class="page" id="page-campaigns">
+      <div class="page-actions">
+        <button class="btn-primary" onclick="openModal('campaignModal')">
+          <span>+</span> إنشاء حملة
+        </button>
+      </div>
+      <div class="card">
+        <div class="card-header"><h3>الحملات التسويقية</h3></div>
+        <div class="card-body" id="campaignsList"></div>
+      </div>
+    </section>
+
+    <!-- ====== CRM ====== -->
+    <section class="page" id="page-crm">
+      <div class="card-row">
+        <div class="card flex-1">
+          <div class="card-header">
+            <h3>ملفات العملاء</h3>
+            <button class="btn-sm" onclick="openModal('customerModal')">+ إضافة عميل</button>
+          </div>
+          <div class="card-body" id="customersList"></div>
+        </div>
+        <div class="card flex-1">
+          <div class="card-header"><h3>تذاكر الدعم</h3></div>
+          <div class="card-body" id="ticketsList"></div>
+        </div>
+      </div>
+      <div class="card mt-20">
+        <div class="card-header"><h3>فتح تذكرة دعم جديدة</h3></div>
+        <div class="card-body">
+          <form id="ticketForm" class="inline-form">
+            <div class="form-row">
+              <div class="form-group"><label>الاسم</label><input type="text" id="ticketName" placeholder="اسم العميل" required/></div>
+              <div class="form-group"><label>البريد الإلكتروني</label><input type="email" id="ticketEmail" placeholder="email@example.com" required/></div>
+            </div>
+            <div class="form-group"><label>استفسارك</label><textarea id="ticketQuery" rows="3" placeholder="اكتب استفسارك هنا..." required></textarea></div>
+            <button type="submit" class="btn-primary">إرسال التذكرة</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== ORDERS ====== -->
+    <section class="page" id="page-orders">
+      <div class="card">
+        <div class="card-header"><h3>سجل الطلبات</h3></div>
+        <div class="card-body" id="ordersList"></div>
+      </div>
+    </section>
+
+    <!-- ====== CONTENT ====== -->
+    <section class="page" id="page-content">
+      <div class="card-row">
+        <div class="card flex-1">
+          <div class="card-header"><h3>إعدادات هوية العلامة التجارية (Brand Profile)</h3></div>
+          <div class="card-body">
+            <form id="brandForm" class="auth-form">
+              <div class="form-group">
+                <label>نبرة صوت العلامة التجارية (Brand Voice)</label>
+                <input type="text" id="brandVoice" placeholder="Professional & Friendly" required/>
+              </div>
+              <div class="form-group">
+                <label>الألوان الأساسية للعلامة (Brand Colors)</label>
+                <input type="text" id="brandColors" placeholder="#1e293b, #3b82f6" required/>
+              </div>
+              <button type="submit" class="btn-primary">حفظ الهوية</button>
+            </form>
+          </div>
+        </div>
+        <div class="card flex-1">
+          <div class="card-header"><h3>استوديو المحتوى الذكي (AI Content Studio)</h3></div>
+          <div class="card-body">
+            <form id="aiContentForm" class="auth-form">
+              <div class="form-group">
+                <label>نوع الإجراء الإبداعي</label>
+                <select id="contentActionType">
+                  <option value="generate">توليد نص إعلاني (Ad Copy)</option>
+                  <option value="rewrite">إعادة صياغة (Rewrite)</option>
+                  <option value="translate">ترجمة سياقية (Translate)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>النص الأساسي أو الفكرة الموجهة</label>
+                <textarea id="contentInput" rows="3" placeholder="اكتب هنا فكرة الإعلان أو النص المراد ترجمته/صياغته..." required></textarea>
+              </div>
+              <div class="form-group">
+                <label>اللغة المستهدفة</label>
+                <select id="contentLanguage">
+                  <option value="ar">العربية (ar)</option>
+                  <option value="en">الإنجليزية (en)</option>
+                  <option value="fr">الفرنسية (fr)</option>
+                </select>
+              </div>
+              <button type="submit" class="btn-primary">✨ تنفيذ بواسطة الوكلاء</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-20">
+        <div class="card-header"><h3>مكتبة المحتوى المولد (Content Library)</h3></div>
+        <div class="card-body" id="contentLibraryList"></div>
+      </div>
+    </section>
+
+    <!-- ====== LOGISTICS ====== -->
+    <section class="page" id="page-logistics">
+      <div class="card">
+        <div class="card-header"><h3>حالة المخزون والتعديل</h3></div>
+        <div class="card-body" id="logisticsInventoryList"></div>
+      </div>
+      <div class="card-row mt-20">
+        <div class="card flex-1">
+          <div class="card-header">
+            <h3>سجل الشحنات وتتبع النقل</h3>
+            <button class="btn-sm" onclick="openShipmentModal()">+ إنشاء شحنة</button>
+          </div>
+          <div class="card-body" id="logisticsShipmentsList"></div>
+        </div>
+        <div class="card flex-1">
+          <div class="card-header">
+            <h3>إدارة طلبات المرتجعات</h3>
+            <button class="btn-sm" onclick="openReturnModal()">+ بدء مرتجع</button>
+          </div>
+          <div class="card-body" id="logisticsReturnsList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== PAYMENTS ====== -->
+    <section class="page" id="page-payments">
+      <div class="card-row">
+        <div class="card flex-1">
+          <div class="card-header"><h3>بوابات الدفع المتاحة</h3></div>
+          <div class="card-body" id="paymentGatewaysList">
+            <div class="data-row">
+              <div class="data-icon">💳</div>
+              <div class="data-info">
+                <div class="data-name">بوابة Stripe</div>
+                <div class="data-sub">مدفوعات البطاقات الائتمانية والـ Apple Pay</div>
+              </div>
+              <button class="btn-sm" id="gate-stripe" onclick="toggleGateway('Stripe')">تفعيل</button>
+            </div>
+            <div class="data-row">
+              <div class="data-icon">🅿️</div>
+              <div class="data-info">
+                <div class="data-name">بوابة PayPal</div>
+                <div class="data-sub">الدفع عبر رصيد وحسابات الباي بال</div>
+              </div>
+              <button class="btn-sm" id="gate-paypal" onclick="toggleGateway('PayPal')">تفعيل</button>
+            </div>
+            <div class="data-row">
+              <div class="data-icon">💵</div>
+              <div class="data-info">
+                <div class="data-name">الدفع عند الاستلام (COD)</div>
+                <div class="data-sub">تأكيد نقدي مباشر بعد الاستلام اللوجستي</div>
+              </div>
+              <button class="btn-sm" id="gate-cod" onclick="toggleGateway('COD')">تفعيل</button>
+            </div>
+          </div>
+        </div>
+        <div class="card flex-1">
+          <div class="card-header">
+            <h3>الفواتير المصدرة والفوترة</h3>
+            <button class="btn-sm" onclick="openInvoiceModal()">+ إنشاء فاتورة</button>
+          </div>
+          <div class="card-body" id="paymentsInvoicesList"></div>
+        </div>
+      </div>
+      <div class="card mt-20">
+        <div class="card-header"><h3>سجل المعاملات المالية</h3></div>
+        <div class="card-body" id="paymentsTransactionsList"></div>
+      </div>
+    </section>
+
+    <!-- ====== ANALYTICS ====== -->
+    <section class="page" id="page-analytics">
+      <div class="card mb-20">
+        <div class="card-header">
+          <h3>مركز التقارير ومؤشرات الأداء</h3>
+          <button class="btn-primary" onclick="exportAnalyticsReport()">📥 تصدير التقرير التشغيلي</button>
+        </div>
+        <div class="card-body">
+          <div class="form-row" style="margin-bottom: 20px;">
+            <div class="form-group">
+              <label>تحديد الفترة الزمنية</label>
+              <select id="analyticsDateFilter" onchange="loadAnalyticsData()">
+                <option value="today">اليوم</option>
+                <option value="week">آخر 7 أيام</option>
+                <option value="month" selected>آخر 30 يوم</option>
+                <option value="year">السنة الحالية</option>
+              </select>
+            </div>
+          </div>
+          <div class="stats-row">
+            <div class="stat-card">
+              <div class="stat-icon green">💰</div>
+              <div class="stat-info"><span class="stat-val" id="analytics-revenue">$0.00</span><span class="stat-label">المبيعات التشغيلية</span></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon blue">⚡</div>
+              <div class="stat-info"><span class="stat-val" id="analytics-conversion">3.2%</span><span class="stat-label">معدل التحويل (CR)</span></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon purple">🎯</div>
+              <div class="stat-info"><span class="stat-val" id="analytics-roi">2.8x</span><span class="stat-label">عائد الإعلان (ROAS)</span></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon orange">🛡️</div>
+              <div class="stat-info"><span class="stat-val" id="analytics-satisfaction">94%</span><span class="stat-label">مؤشر رضا العملاء</span></div>
+            </div>
+          </div>
+          <div id="analyticsBreakdown" class="mt-20"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><h3>🤖 محاكاة سيناريوهات ماذا لو (What-If Decisions)</h3></div>
+        <div class="card-body">
+          <form id="whatifForm" class="auth-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>تعديل سعر المنتج المقترح (%)</label>
+                <input type="number" id="whatifPrice" value="0" placeholder="مثال: -5 (تخفيض 5%) أو +10"/>
+              </div>
+              <div class="form-group">
+                <label>تغيير ميزانية الإعلان ($)</label>
+                <input type="number" id="whatifBudget" value="0" placeholder="مثال: +150 دولار"/>
+              </div>
+            </div>
+            <button type="submit" class="btn-primary">🚀 بدء التحليل الافتراضي</button>
+          </form>
+          <div id="whatifResults" class="hidden mt-20" style="padding:16px; background:var(--bg-dark); border-radius:12px; border:1px solid var(--border);">
+            <h4>النتائج المتوقعة من وكلاء اتخاذ القرار:</h4>
+            <div class="dashboard-grid mt-20" style="grid-template-columns: repeat(3, 1fr);">
+              <div class="stat-card">
+                <div class="stat-info"><span class="stat-val" id="whatif-vol" style="color:var(--sky-emerald)">+0%</span><span class="stat-label">المبيعات المتوقعة</span></div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-info"><span class="stat-val" id="whatif-margin" style="color:var(--sky-gold)">0%</span><span class="stat-label">صافي الهامش الربحي</span></div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-info"><span class="stat-val" id="whatif-conversion" style="color:var(--sky-blue)">0%</span><span class="stat-label">معدل التحويل المتوقع</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== SETTINGS ====== -->
+    <section class="page" id="page-settings">
+      <div class="card-row">
+        <div class="card flex-1">
+          <div class="card-header">
+            <h3>بوابات التكاملات والـ APIs المتاحة</h3>
+            <button class="btn-sm" onclick="openModal('integrationModal')">+ إضافة تكامل</button>
+          </div>
+          <div class="card-body" id="integrationsList"></div>
+        </div>
+        <div class="card flex-1">
+          <div class="card-header"><h3>إدارة الملف الشخصي</h3></div>
+          <div class="card-body">
+            <form id="profileForm" class="auth-form">
+              <div class="form-group">
+                <label>الاسم الكامل</label>
+                <input type="text" id="profileName" placeholder="مشرف المنصة" required/>
+              </div>
+              <div class="form-group">
+                <label>البريد الإلكتروني</label>
+                <input type="email" id="profileEmail" placeholder="admin@gesky.com" required/>
+              </div>
+              <div class="form-group">
+                <label>كلمة المرور الجديدة</label>
+                <input type="password" id="profilePassword" placeholder="اتركها فارغة إن لم ترغب في التغيير"/>
+              </div>
+              <button type="submit" class="btn-primary">حفظ الملف</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-row mt-20">
+        <div class="card flex-1">
+          <div class="card-header"><h3>⚙️ إعدادات الاتصال بالخادم والـ API</h3></div>
+          <div class="card-body">
+            <form id="apiSettingsForm" class="auth-form">
+              <div class="form-group">
+                <label>رابط واجهة API الخادم (API Server URL)</label>
+                <input type="url" id="apiUrlInput" placeholder="http://127.0.0.1:8001/api" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-dark); color: var(--text-primary); font-family: monospace; font-size: 0.9rem;" />
+                <span class="auth-hint" style="margin-top: 8px; font-size: 0.85rem; color: var(--text-secondary); display: block;">
+                  العنوان الافتراضي للتطوير المحلي هو: <code>http://127.0.0.1:8001/api</code>.
+                  إذا كنت تقوم بتشغيل المنصة على GitHub Pages وتريد الاتصال بالخلفية المحلية، فتأكد من تشغيل الخلفية على المنفذ 8001.
+                  إذا قمت برفع الخلفية (Backend) على خادم سحابي خارجي (مثل Render أو Fly.io)، يرجى وضع رابط الـ API الخاص به هنا (مثال: <code>https://my-backend-app.com/api</code>).
+                </span>
+              </div>
+              <div style="display: flex; gap: 12px; margin-top: 15px;">
+                <button type="submit" class="btn-primary" style="flex: 1; justify-content: center;">حفظ رابط الخادم وإعادة تحميل الصفحة</button>
+                <button type="button" class="btn-sm" onclick="resetApiUrl()" style="padding: 10px 16px; border: 1px solid var(--border); background: transparent; color: var(--text-primary); border-radius: 8px; cursor: pointer;">استعادة الافتراضي</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====== AGENTS ====== -->
+    <section class="page" id="page-agents">
+      <div class="card">
+        <div class="card-header">
+          <h3>سجل قرارات وكلاء A2A</h3>
+          <span class="badge badge-blue" id="decisionCount">—</span>
+        </div>
+        <div class="card-body" id="agentDecisionsList"></div>
+      </div>
+    </section>
+
+    <!-- ====== SIMULATE ====== -->
+    <section class="page" id="page-simulate">
+      <div class="sim-intro card mb-20">
+        <div class="card-body">
+          <h3>⚡ محاكاة السيناريوهات الذكية A2A</h3>
+          <p>اختر سيناريو وشاهد وكلاء المنصة يعملون في الوقت الفعلي ويتخذون قرارات تلقائية وتدريجية.</p>
+        </div>
+      </div>
+      <div class="sim-grid">
+        <div class="sim-card" onclick="runSimulation('campaign')">
+          <div class="sim-icon">📢</div>
+          <h3>صناعة حملة إعلانية</h3>
+          <p>تحليل الجمهور → توليد المحتوى → تكييف ثقافي → نشر الحملة</p>
+        </div>
+        <div class="sim-card" onclick="runSimulation('order')">
+          <div class="sim-icon">📦</div>
+          <h3>تنفيذ طلب لوجستي</h3>
+          <p>فحص مخزون → اختيار شاحن → تحسين مسار → تتبع وإخطار</p>
+        </div>
+        <div class="sim-card" onclick="runSimulation('support')">
+          <div class="sim-icon">💬</div>
+          <h3>حل تذكرة دعم</h3>
+          <p>تحليل مشاعر → استرداد معرفة → رد آلي → إغلاق التذكرة</p>
+        </div>
+        <div class="sim-card" onclick="runSimulation('pricing')">
+          <div class="sim-icon">📈</div>
+          <h3>تسعير ذكي ديناميكي</h3>
+          <p>مراقبة منافسين → تحليل مرونة الطلب → اقتراح سعر أمثل</p>
+        </div>
+      </div>
+      <div id="simResultsContainer" class="hidden card mt-20">
+        <div class="card-header">
+          <h3>🤖 تسلسل قرارات الوكلاء</h3>
+          <span class="badge badge-green">مكتمل</span>
+        </div>
+        <div class="card-body" id="simResults"></div>
+      </div>
+      <div id="simLoading" class="sim-loading hidden">
+        <div class="spinner"></div>
+        <p>الوكلاء يعملون الآن...</p>
+      </div>
+    </section>
+  </div><!-- /pages-wrapper -->
+</main>
+
+<!-- ===== MODALS ===== -->
+
+<!-- Store Modal -->
+<div class="modal-overlay" id="storeModal">
+  <div class="modal-box">
+    <div class="modal-header"><h3>إنشاء متجر جديد</h3><button onclick="closeModal('storeModal')">✕</button></div>
+    <form id="storeForm" class="auth-form">
+      <div class="form-group"><label>اسم المتجر</label><input type="text" id="storeName" placeholder="متجر السماء" required/></div>
+      <div class="form-group"><label>وصف المتجر</label><textarea id="storeDesc" rows="3" placeholder="وصف مختصر..."></textarea></div>
+      <div class="form-group"><label>التصنيف</label>
+        <select id="storeCategory">
+          <option>Electronics</option><option>Fashion</option><option>Food & Beverage</option>
+          <option>Home & Garden</option><option>Sports</option><option>General</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-auth">إنشاء المتجر</button>
+    </form>
+  </div>
+</div>
+
+<!-- Product Modal -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal-box">
+    <div class="modal-header"><h3>إضافة منتج جديد</h3><button onclick="closeModal('productModal')">✕</button></div>
+    <form id="productForm" class="auth-form">
+      <div class="form-group"><label>اسم المنتج</label><input type="text" id="productName" placeholder="اسم المنتج" required/></div>
+      <div class="form-group"><label>الوصف</label><textarea id="productDesc" rows="2" placeholder="وصف المنتج..."></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label>السعر (دولار)</label><input type="number" id="productPrice" min="0" step="0.01" placeholder="0.00" required/></div>
+        <div class="form-group"><label>الكمية في المخزون</label><input type="number" id="productStock" min="0" placeholder="0" required/></div>
+      </div>
+      <button type="submit" class="btn-auth">إضافة المنتج</button>
+    </form>
+  </div>
+</div>
+
+<!-- Campaign Modal -->
+<div class="modal-overlay" id="campaignModal">
+  <div class="modal-box">
+    <div class="modal-header"><h3>إنشاء حملة تسويقية</h3><button onclick="closeModal('campaignModal')">✕</button></div>
+    <form id="campaignForm" class="auth-form">
+      <div class="form-group"><label>اسم الحملة</label><input type="text" id="campaignName" placeholder="حملة الصيف 2026" required/></div>
+      <div class="form-group"><label>المنصة الإعلانية</label>
+        <select id="campaignPlatform">
+          <option>Meta Ads</option><option>Google Ads</option><option>TikTok Ads</option><option>Snapchat Ads</option><option>Meta & Google Ads</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>الميزانية (دولار)</label><input type="number" id="campaignBudget" min="0" placeholder="500" required/></div>
+        <div class="form-group"><label>الجمهور المستهدف</label><input type="text" id="campaignAudience" placeholder="شباب 18-35 عاماً"/></div>
+      </div>
+      <div class="form-group"><label>نص الحملة</label><textarea id="campaignContent" rows="3" placeholder="اكتب نص الإعلان هنا..."></textarea></div>
+      <button type="submit" class="btn-auth">إطلاق الحملة</button>
+    </form>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast hidden"></div>
+
+<script src="config.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>
